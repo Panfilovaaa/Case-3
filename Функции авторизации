@@ -1,0 +1,43 @@
+class AuthManager {
+    constructor() {
+        this.currentUser = null;
+        this.users = JSON.parse(localStorage.getItem('users')) || [];
+    }
+
+    register(username, email, password) {
+        if (this.users.find(user => user.username === username)) {
+            return { success: false, message: 'Пользователь уже существует' };
+        }
+        
+        const newUser = {
+            id: Date.now(),
+            username,
+            email,
+            password: btoa(password), // простое кодирование (в реальности используйте хеширование)
+            subscriptions: [],
+            posts: []
+        };
+        
+        this.users.push(newUser);
+        localStorage.setItem('users', JSON.stringify(this.users));
+        return { success: true, user: newUser };
+    }
+
+    login(username, password) {
+        const user = this.users.find(u =>
+            u.username === username && u.password === btoa(password)
+        );
+        
+        if (user) {
+            this.currentUser = user;
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            return { success: true, user };
+        }
+        return { success: false, message: 'Неверные учётные данные' };
+    }
+
+    logout() {
+        this.currentUser = null;
+        localStorage.removeItem('currentUser');
+    }
+}
