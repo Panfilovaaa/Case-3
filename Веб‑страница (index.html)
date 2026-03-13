@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Блог</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Мой Блог</h1>
+        <nav>
+            <a href="#" id="home-link">Главная</a>
+            <a href="#" id="my-posts-link">Мои посты</a>
+            <a href="#" id="profile-link">Профиль</a>
+            <button id="logout-btn" style="display:none">Выйти</button>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Формы авторизации/регистрации -->
+        <div id="auth-section">
+            <form id="login-form">
+                <h2>Вход</h2>
+                <input type="text" id="login-username" placeholder="Логин" required>
+                <input type="password" id="login-password" placeholder="Пароль" required>
+                <button type="submit">Войти</button>
+            </form>
+            
+            <form id="register-form">
+                <h2>Регистрация</h2>
+                <input type="text" id="reg-username" placeholder="Логин" required>
+                <input type="email" id="reg-email" placeholder="Email" required>
+                <input type="password" id="reg-password" placeholder="Пароль" required>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+        
+        <!-- Создание поста -->
+        <div id="create-post-section" style="display:none">
+            <h2>Новый пост</h2>
+            <form id="post-form">
+                <input type="text" id="post-title" placeholder="Заголовок" required>
+                <textarea id="post-content" placeholder="Содержание" required></textarea>
+                <input type="text" id="post-tags" placeholder="Теги (через запятую)">
+                <label>
+                    <input type="checkbox" id="private-post"> Только по запросу
+                </label>
+                <button type="submit">Опубликовать</button>
+            </form>
+        </div>
+        
+        <!-- Лента постов -->
+        <div id="posts-section">
+            <!-- Здесь будут отображаться посты -->
+        </div>
+    </main>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
